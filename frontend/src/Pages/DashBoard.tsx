@@ -2,6 +2,7 @@ import { Button } from '../components/Button';
 import { PlusIcon } from '../icons/PlusIcon';
 import { ShareIcon } from '../icons/ShareIcon';
 import { Card } from '../components/Card';
+import { API_URL } from '../config/api';
 import { CreateContentModel } from '../components/CreateComponentModel';
 import { CreateFolderModal } from '../components/CreateFolderModal';
 import { EditModal } from '../components/EditModal';
@@ -70,7 +71,7 @@ export function DashBoard() {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      let url = "http://localhost:8000/api/v1/content";
+      let url = `${API_URL}/api/v1/content`;
       if (folderId !== undefined) {
         url += `?folderId=${folderId === 'null' ? '' : folderId}`;
       }
@@ -101,7 +102,7 @@ export function DashBoard() {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await axios.get("http://localhost:8000/api/v1/brain/share/status", {
+      const response = await axios.get(`${API_URL}/api/v1/brain/share/status`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -155,7 +156,7 @@ export function DashBoard() {
           const token = localStorage.getItem("token");
           if (!token) return;
 
-          await axios.delete(`http://localhost:8000/api/v1/content/${contentId}`, {
+          await axios.delete(`${API_URL}/api/v1/content/${contentId}`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -213,11 +214,11 @@ export function DashBoard() {
       if (!token) return;
       
       if (editType === 'content') {
-        await axios.put(`http://localhost:8000/api/v1/content/${data.id}`, data, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.put(`${API_URL}/api/v1/content/${data.id}`, data, { headers: { Authorization: `Bearer ${token}` } });
         showNotification('Content updated successfully!', 'success');
         fetchContents();
       } else if (editType === 'folder') {
-        await axios.put(`http://localhost:8000/api/v1/folders/${data.id}`, data, { headers: { Authorization: `Bearer ${token}` } });
+        await axios.put(`${API_URL}/api/v1/folders/${data.id}`, data, { headers: { Authorization: `Bearer ${token}` } });
         showNotification('Folder updated successfully!', 'success');
         await fetchFolders();
         setFoldersUpdateTrigger(prev => prev + 1); // Trigger sidebar folder update
@@ -245,7 +246,7 @@ export function DashBoard() {
           return;
         }
         
-        axios.delete(`http://localhost:8000/api/v1/folders/${folderId}?moveContent=root`, { 
+        axios.delete(`${API_URL}/api/v1/folders/${folderId}?moveContent=root`, { 
           headers: { Authorization: `Bearer ${token}` } 
         })
         .then(() => {
@@ -277,7 +278,7 @@ export function DashBoard() {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await axios.post("http://localhost:8000/api/v1/brain/share", {
+      const response = await axios.post(`${API_URL}/api/v1/brain/share`, {
         share: !shareLink
       }, {
         headers: {
@@ -302,7 +303,7 @@ export function DashBoard() {
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
-      const response = await axios.get("http://localhost:8000/api/v1/folders", {
+      const response = await axios.get(`${API_URL}/api/v1/folders`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFolders(response.data.folders || []);

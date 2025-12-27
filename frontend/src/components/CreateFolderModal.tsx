@@ -47,7 +47,7 @@ export function CreateFolderModal({ open, onClose, onFolderCreated, onNotificati
       }
 
       await axios.post(
-        "http://localhost:8000/api/v1/folders",
+        `${API_URL}/api/v1/folders`,
         {
           name: name.trim(),
           description: description.trim(),

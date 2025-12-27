@@ -49,7 +49,7 @@ export function SideBar({ onTabChange, activeTab, activeFolderId, onCreateFolder
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await axios.get("http://localhost:8000/api/v1/folders", {
+      const response = await axios.get(`${API_URL}/api/v1/folders`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

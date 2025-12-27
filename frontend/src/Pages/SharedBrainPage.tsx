@@ -47,7 +47,7 @@ export function SharedBrainPage() {
         }
 
         console.log("Fetching shared brain for link:", sharelink);
-        const res = await axios.get(`http://localhost:8000/api/v1/brain/${sharelink}`);
+        const res = await axios.get(`${API_URL}/api/v1/brain/${sharelink}`);
         console.log("Shared brain response:", res.data);
         
         setContents(res.data.contents || []);

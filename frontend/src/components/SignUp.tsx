@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from '../config/api';
 
 interface SignUpProps {
   onClose?: () => void;
@@ -44,7 +45,7 @@ export function SignUp({}: SignUpProps) {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/api/v1/signup",
+        `${API_URL}/api/v1/signup`,
         { username, password }
       );
 

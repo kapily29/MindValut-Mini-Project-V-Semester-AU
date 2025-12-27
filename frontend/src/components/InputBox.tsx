@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from '../config/api';
 
 interface Folder {
     id: string;
@@ -29,7 +30,7 @@ export function InputBox({ onContentAdded, onNotification, selectedFolderId }: I
                 const token = localStorage.getItem("token");
                 if (!token) return;
 
-                const response = await axios.get("http://localhost:8000/api/v1/folders", {
+                const response = await axios.get(`${API_URL}/api/v1/folders`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -96,7 +97,7 @@ export function InputBox({ onContentAdded, onNotification, selectedFolderId }: I
             }
 
             await axios.post(
-                "http://localhost:8000/api/v1/content",
+                `${API_URL}/api/v1/content`,
                 payload,
                 {
                     headers: {
