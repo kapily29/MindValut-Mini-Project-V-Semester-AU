@@ -10,6 +10,7 @@ import { PlusIcon } from "../icons/PlusIcon";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useTheme } from "../contexts/ThemeContext";
+import { API_URL } from '../config/api';
 
 interface Folder {
   id: string;

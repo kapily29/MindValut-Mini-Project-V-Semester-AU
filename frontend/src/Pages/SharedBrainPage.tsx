@@ -4,6 +4,7 @@ import axios from "axios";
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
 import { Notification, useNotification } from '../components/Notification';
+import { API_URL } from '../config/api';
 
 interface SharedContent {
   id: string;

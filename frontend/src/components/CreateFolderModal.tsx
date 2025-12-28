@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CrossIcon } from "../icons/CrossIcon";
 import axios from "axios";
+import { API_URL } from '../config/api';
 
 interface CreateFolderModalProps {
   open: boolean;
