@@ -8,7 +8,6 @@ import { connectDB } from './dbconnection.js';
 import { ContentModel, LinkModel, UserModel, FolderModel } from './db.js';
 import { random } from './utils.js';
 
-// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
@@ -16,9 +15,8 @@ const app = express();
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';
 
 const allowedOrigins = [
-  "https://mind-valut-fronted.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:3000"
+  "https://mind-valut-frontend.vercel.app",
+  "https://mind-valut-backend.vercel.app/api/v1/signup"
 ];
 
 app.use(cors({
