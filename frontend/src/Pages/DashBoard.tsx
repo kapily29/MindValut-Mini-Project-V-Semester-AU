@@ -109,8 +109,7 @@ export function DashBoard() {
       });
 
       if (response.data.isShared) {
-        const baseUrl = window.location.origin;
-        setShareLink(`${baseUrl}/brain/${response.data.hash}`);
+        setShareLink(`${window.location.origin}/brain/${response.data.hash}`);
       }
     } catch (err) {
       console.error("Error checking share status:", err);
@@ -290,8 +289,7 @@ export function DashBoard() {
 
       if (!shareLink && response.data.hash) {
         // If no link exists, generate new
-        const baseUrl = window.location.origin;
-        setShareLink(`${baseUrl}/brain/${response.data.hash}`);
+        setShareLink(`${window.location.origin}/brain/${response.data.hash}`);
       } else {
         // Remove existing link
         setShareLink(null);
